@@ -41,8 +41,8 @@ def gua(q)
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('AhozhCqRqPY29p3ZJN1x/JGo88ioGFM1lcWXJq0w6WxNQtsr1SPCpV2vPBiOLBX0iHGpC2rXlLiLlDFp/5LUmc9vTNeoa3IeynD2n7EIqPsS8svT+EW0UZf+41OjOajh+H8GqdedCWA969NZbX20kwdB04t89/1O/w1cDnyilFU=')
-handler1 = WebhookHandler('d3e326b7dc8bf84b18aafe1ac47465d4')
+line_bot_api = LineBotApi('oGueiClujjHgpB7H4ukWLGy2tby8w4j+bJwNxKDW6XrIUQUch7y4QZNep49ozPNpdfN/gScOu81eHqaRk1TLC5zQxMDGKmRD9/HpP0ST9dfSm6/xHJpCjbZuk6/BuEKCaxozOiYXX92wdIBT+VQkNwdB04t89/1O/w1cDnyilFU=')
+handler1 = WebhookHandler('c2ae5e0dc30dd3efc87128e58e197e4a c2ae5e0dc30dd3efc87128e58e197e4a')
 
 
 @app.route("/callback", methods=['POST'])
