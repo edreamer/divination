@@ -10,25 +10,34 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
+import random
 import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+def gua(q)
+   gua_dict = {1: "乾", 2: "坤", 3: "屯", 4: "蒙", 5: "需", 6: "訟", 7: "師", 8: "比", 9: "小畜", 10: "履", 11: "泰", 12: "否", 13: "同人", 14: "大有", 15: "謙", 16: "豫", 17: "隨", 18: "蠱", 19: "臨", 20: "觀", 21: "噬嗑", 22: "贅", 23: "訟", 24: "復", 25: "無妄", 26: "大畜", 27: "頤", 28: "大過", 29: "坎", 30: "離", 31: "鹹", 32: "恆", 33: "遯", 34: "大壯", 35: "晉", 36: "明夷", 37: "家人", 38: "睽", 39: "蹇", 40: "解", 41: "損", 42: "益", 43: "夬", 44: "姤", 45: "萃", 46: "升", 47: "困", 48: "井", 49: "革", 50: "鼎", 51: "震", 52: "艮", 53: "漸", 54: "歸妹", 55: "豐", 56: "旅", 57: "巽", 58: "兌", 59: "渙", 60: "節", 61: "中孚", 62: "小過", 63: "既濟", 64: "未濟"}
+   zhi_dict = {1: "初爻", 2: "二爻", 3: "三爻", 4: "四爻", 5: "五爻", 6: "上爻"}
+   result_dict = {"陽爻": " ——————○——————", "陰爻": " —————   ————— "}
+   yao_list = [random.randint(0, 1) for i in range(6)]
+   result_list = [result_dict["陰爻"] if yao == 1 else result_dict["陽爻"] for yao in yao_list]
+   gua_num = sum([yao_list[i] * 2**(5-i) for i in range(6)]) + 1
+   for i in range(6):
+       msg=(zhi_dict[i+1], result_list[i],end="\n")
+   msg+=(gua_dict[gua_num],end="\n")
 
-def checkword(w):
-    url = 'https://www.moedict.tw/uni/' + w
-    r = requests.get(url)
-    datas = r.json()
-    msg = '國字：' + datas['title'] + '\n'
-    msg += '部首：' + datas['radical'] + '\n'
-    msg += '筆劃：' + str(datas['stroke_count']) + '\n\n'
-    for i in range(len(datas['heteronyms'])):
-        msg += '注音：' + datas['heteronyms'][i]['bopomofo'] + '\n'
-        msg += '拼音：' + datas['heteronyms'][i]['pinyin'] + '\n'    
-        for j in range(len(datas['heteronyms'][i]['definitions'])):
-            if 'type' in datas['heteronyms'][i]['definitions'][j]:
-                msg += '[{}] {}\n'.format(
-                    datas['heteronyms'][i]['definitions'][j]['type'],
-                    datas['heteronyms'][i]['definitions'][j]['def'])
-        msg += '\n'
-    return msg
+   url = "https://www.newton.com.tw/wiki/%E6%98%93%E7%B6%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6"
+   response = requests.get(url)
+   soup = BeautifulSoup(response.text, 'html.parser')
+   msg1=soup.find('div',id="body").find('article').find('div',id='content')
+   msg2=msg1.find_all('div',class_="wiki")
+   i=gua_num*3
+   msg3=msg2[i].text
+   msg+=msg3.replace("。","。\n")
+   url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYAah11varWLxPaoQNoeG2oaReLqfe_W0GMAq9kFbfl0sdhtxIimTymFvoF2JSw-PZDtt3xWx3eSV1/pub?gid=2034558057&single=true&output=csv'
+   df = pd.read_csv(url)
+   df1=df[df['卦象']==gua_num]
+   msg+=(df1['問事']+":"+df1['解釋']) 
+   return msg
 
 app = Flask(__name__)
 
