@@ -13,7 +13,6 @@ from linebot.models import (
 import requests
 
 import random
-
 from bs4 import BeautifulSoup
 import pandas as pd
 
@@ -26,9 +25,9 @@ def question(q):
    yao_list = [random.randint(0, 1) for i in range(6)]
    result_list = [result_dict["陰爻"] if yao == 1 else result_dict["陽爻"] for yao in yao_list]
    gua_num = sum([yao_list[i] * 2**(5-i) for i in range(6)]) + 1
-   msg="\n卜筮結果為：\n"
+   msg= "\n卜筮結果為：\n"
    for i in range(6):
-             msg+=zhi_dict[i+1] + result_list[i] + "\n"
+             msg+= zhi_dict[i+1] + result_list[i] + "\n"
    msg+="\n本次卜卦所得卦象為："+ gua_dict[gua_num] +"\n"
    url = "https://www.newton.com.tw/wiki/%E6%98%93%E7%B6%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6"
    response = requests.get(url)
@@ -38,10 +37,10 @@ def question(q):
    i=gua_num*3
    msg3=msg2[i].text
    msg4=msg3.replace("。","。\n")
-   msg+=msg4
-   msg+="卜卦結果僅供參考"
-   url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYAah11varWLxPaoQNoeG2oaReLqfe_W0GMAq9kFbfl0sdhtxIimTymFvoF2JSw-PZDtt3xWx3eSV1/pub?gid=2034558057&single=true&output=csv'
-   df = pd.read_csv(url)
+   msg+= msg4
+   msg+= "卜卦結果僅供參考"
+   url1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYAah11varWLxPaoQNoeG2oaReLqfe_W0GMAq9kFbfl0sdhtxIimTymFvoF2JSw-PZDtt3xWx3eSV1/pub?gid=2034558057&single=true&output=csv'
+   df = pd.read_csv(url1)
    df1=df[df['卦象']== gua_num]
    df2=df1[df1['問事']== q_dict[q]]
    df3=df2['解釋'].values 
