@@ -22,8 +22,8 @@ def gua(q)
    result_list = [result_dict["陰爻"] if yao == 1 else result_dict["陽爻"] for yao in yao_list]
    gua_num = sum([yao_list[i] * 2**(5-i) for i in range(6)]) + 1
    for i in range(6):
-       msg=(zhi_dict[i+1], result_list[i],end="\n")
-   msg+=(gua_dict[gua_num],end="\n")
+       msg=zhi_dict[i+1]+result_list[i]+"\n"
+   msg+=gua_dict[gua_num]+"\n"
 
    url = "https://www.newton.com.tw/wiki/%E6%98%93%E7%B6%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6"
    response = requests.get(url)
@@ -36,7 +36,7 @@ def gua(q)
    url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYAah11varWLxPaoQNoeG2oaReLqfe_W0GMAq9kFbfl0sdhtxIimTymFvoF2JSw-PZDtt3xWx3eSV1/pub?gid=2034558057&single=true&output=csv'
    df = pd.read_csv(url)
    df1=df[df['卦象']==gua_num]
-   msg+=(df1['問事']+":"+df1['解釋']) 
+   msg+=df1['問事']+":"+df1['解釋']+"\n" 
    return msg
 
 app = Flask(__name__)
