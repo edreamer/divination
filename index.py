@@ -13,7 +13,7 @@ from linebot.models import (
 import requests
 
 import random
-import requests
+
 from bs4 import BeautifulSoup
 import pandas as pd
 
