@@ -30,7 +30,6 @@ def question(q):
    for i in range(6):
              msg+=zhi_dict[i+1] + result_list[i] + "\n"
    msg+="\n本次卜卦所得卦象為："+ gua_dict[gua_num] +"\n"
-   
    url = "https://www.newton.com.tw/wiki/%E6%98%93%E7%B6%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6"
    response = requests.get(url)
    soup = BeautifulSoup(response.text, 'html.parser')
