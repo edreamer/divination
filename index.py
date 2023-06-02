@@ -22,7 +22,7 @@ def gua(q):
    result_list = [result_dict["陰爻"] if yao == 1 else result_dict["陽爻"] for yao in yao_list]
    gua_num = sum([yao_list[i] * 2**(5-i) for i in range(6)]) + 1
    for i in range(6):
-       msg=zhi_dict[i+1]+result_list[i]+"\n"
+       msg+=zhi_dict[i+1]+result_list[i]+"\n"
    msg+=gua_dict[gua_num]+"\n"
 
    url = "https://www.newton.com.tw/wiki/%E6%98%93%E7%B6%93%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6"
