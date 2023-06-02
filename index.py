@@ -36,7 +36,7 @@ def gua(q):
    url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYAah11varWLxPaoQNoeG2oaReLqfe_W0GMAq9kFbfl0sdhtxIimTymFvoF2JSw-PZDtt3xWx3eSV1/pub?gid=2034558057&single=true&output=csv'
    df = pd.read_csv(url)
    df1=df[df['卦象']==gua_num]
-   msg+=df1['問事']+":"+df1['解釋']+"\n" 
+   msg+=df1['問事']+":"+df1['解釋']
    return msg
 
 app = Flask(__name__)
