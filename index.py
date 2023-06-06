@@ -21,7 +21,6 @@ def question(q):
    zhi_dict = {1: "初爻", 2: "二爻", 3: "三爻", 4: "四爻", 5: "五爻", 6: "上爻"}
    result_dict = {"陽爻": " ——————○——————", "陰爻": " —————   ————— "}
    q_dict={1: "運勢", 2: "愛情", 3: "求事求職", 4: "家運", 5: "旅行", 6: "考試", 7: "訟詞糾紛", 8: "等人", 9: "尋人" , 10: "買賣" , 11: "疾病", 12: "失物", 13: "週轉", 14: "子女", 15: "胎孕"}
-   
    yao_list = [random.randint(0, 1) for i in range(6)]
    result_list = [result_dict["陰爻"] if yao == 1 else result_dict["陽爻"] for yao in yao_list]
    gua_num = sum([yao_list[i] * 2**(5-i) for i in range(6)]) + 1
