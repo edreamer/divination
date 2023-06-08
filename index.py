@@ -13,7 +13,7 @@ from linebot.models import (
 import requests
 
 import random
-from bs4 import BeautifulSoup4
+from bs4 import BeautifulSoup
 import pandas as pd
 
 def question(q):
