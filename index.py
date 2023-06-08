@@ -46,7 +46,7 @@ def question(q):
    df3=df2['解釋'].values 
    msg+="[{}]".format(q_dict[q])+df3
    msg+='\n'
-   return msg
+   return msg[0]
 
 app = Flask(__name__)
 
