@@ -39,8 +39,8 @@ def question(q):
    msg+= msg4
    msg+= "卜卦結果僅供參考"
    url1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYAah11varWLxPaoQNoeG2oaReLqfe_W0GMAq9kFbfl0sdhtxIimTymFvoF2JSw-PZDtt3xWx3eSV1/pub?gid=2034558057&single=true&output=csv'
-   r = requests.get(url1)
-   df = pd.read_csv(r)
+   #r = requests.get(url1)
+   df = pd.read_csv(url1)
    df1=df[df['卦象']== gua_num]
    df2=df1[df1['問事']== q_dict[q]]
    df3=df2['解釋'].values 
